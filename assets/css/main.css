@@ -116,8 +116,8 @@
   --heading-six: clamp(1rem, 0.769rem + 0.6813vw, 1.25rem);
   /* Font Size End */
   /* template main primary color */
-  --main-h: 72;
-  --main-s: 99%;
+  --main-h: 19;
+  --main-s: 100%;
   --main-l: 50%;
   --main: var(--main-h) var(--main-s) var(--main-l);
   /* template main secendary color */

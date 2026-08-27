@@ -26,9 +26,26 @@
 (function ($) {
   "use strict";
 
+  // Force page to start at top on reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.addEventListener('beforeunload', function () {
+    window.scrollTo(0, 0);
+  });
+  window.addEventListener('load', function () {
+    if (window.location.hash) {
+      if (history.replaceState) {
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+      }
+    }
+    window.scrollTo(0, 0);
+  });
+
   ////////////////////////////////////////////////////
   // 01. PreLoader Js
   document.addEventListener("DOMContentLoaded", () => {
+    window.scrollTo(0, 0);
     // Create GSAP timeline
     const tl = gsap.timeline();
     const svg = document.getElementById("preloaderSvg");

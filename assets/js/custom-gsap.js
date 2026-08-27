@@ -22,23 +22,25 @@
 
   ////////////////////////////////////////////////////
   // 01. Smooth Scroll Js
-  function smoothSctoll() {
-    $(".smooth a").on("click", function (event) {
-      var target = $(this.getAttribute("href"));
+  $(document).on("click", 'a[href^="#"]', function (event) {
+    var href = $(this).attr("href");
+    if (href && href !== "#") {
+      var target = $(href);
       if (target.length) {
         event.preventDefault();
-        $("html, body")
-          .stop()
-          .animate(
-            {
-              scrollTop: target.offset().top - 120,
-            },
-            1500,
-          );
+        $(".tw-offcanvas-2-area").removeClass("opened");
+        $(".body-overlay").removeClass("opened");
+        if (typeof ScrollSmoother !== "undefined" && ScrollSmoother.get()) {
+          ScrollSmoother.get().scrollTo(target[0], true, "top 80px");
+        } else {
+          $("html, body").stop().animate({
+            scrollTop: target.offset().top - 80
+          }, 800);
+        }
       }
-    });
-  }
-  smoothSctoll();
+    }
+  });
+
   if ($("#smooth-wrapper").length && $("#smooth-content").length) {
     gsap.registerPlugin(
       ScrollTrigger,
@@ -55,6 +57,14 @@
       effects: true,
       normalizeScroll: false,
       ignoreMobileResize: true,
+    });
+
+    // Reset scroll position on initial load / reload
+    window.addEventListener("load", () => {
+      if (smoother) {
+        smoother.scrollTo(0, false);
+      }
+      window.scrollTo(0, 0);
     });
   }
 
