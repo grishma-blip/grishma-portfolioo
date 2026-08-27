@@ -76,68 +76,7 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: #ffffff;
       }
-      /* ================= CRAZY DARK MODE ================= */
-      body.crazy-dark {
-        background-color: #050507 !important;
-        color: #e2e8f0 !important;
-      }
-      body.crazy-dark .banner-three-area {
-        background: radial-gradient(circle at 50% 25%, rgba(255, 81, 1, 0.18) 0%, rgba(12, 12, 18, 0.96) 55%, #050507 100%) !important;
-        transition: background 0.5s ease;
-      }
-      body.crazy-dark .banner-three-title,
-      body.crazy-dark .banner-three-left-title,
-      body.crazy-dark .banner-three-center-title {
-        color: #ffffff !important;
-      }
-      body.crazy-dark .banner-three-title span {
-        color: #FF5101 !important;
-      }
-      body.crazy-dark .banner-three-left,
-      body.crazy-dark .banner-three-right {
-        background: rgba(18, 18, 24, 0.9) !important;
-        border: 1px solid rgba(255, 81, 1, 0.35) !important;
-        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 81, 1, 0.18) !important;
-        color: #ffffff !important;
-      }
-      body.crazy-dark .banner-three-counter-item {
-        background: rgba(26, 26, 34, 0.92) !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        color: #ffffff !important;
-      }
-      body.crazy-dark .banner-three-counter-title,
-      body.crazy-dark .banner-three-counter-paragraph,
-      body.crazy-dark .banner-three-list ul li {
-        color: #ffffff !important;
-      }
-      body.crazy-dark .header-three-area {
-        background: rgba(5, 5, 7, 0.9) !important;
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255, 81, 1, 0.2);
-      }
-      body.crazy-dark .header-three-logo span,
-      body.crazy-dark .header-three-logo a {
-        color: #ffffff !important;
-      }
-      .theme-toggle-btn {
-        width: 44px;
-        height: 44px;
-        background: rgba(255, 81, 1, 0.12);
-        border: 1px solid rgba(255, 81, 1, 0.35);
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-      }
-      .theme-toggle-btn:hover {
-        transform: scale(1.1) rotate(15deg);
-        background: rgba(255, 81, 1, 0.25) !important;
-        box-shadow: 0 0 22px rgba(255, 81, 1, 0.4);
-      }
-      body.crazy-dark .theme-toggle-btn {
-        background: rgba(255, 81, 1, 0.2) !important;
-        border-color: #FF5101 !important;
-        box-shadow: 0 0 15px rgba(255, 81, 1, 0.35);
-      }
+
     </style>
   </head>
 
@@ -332,12 +271,7 @@
           <!-- Menu End  -->
 
           <!-- Header Right start -->
-          <div class="header-right d-flex align-items-center gap-3">
-            <!-- Dark Mode Toggle Button Start -->
-            <button id="theme-toggle-btn" class="theme-toggle-btn rounded-circle d-inline-flex justify-content-center align-items-center" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
-              <i id="theme-toggle-icon" class="ph-bold ph-moon-stars fs-4" style="color: #FF5101;"></i>
-            </button>
-            <!-- Dark Mode Toggle Button End -->
+          <div class="header-right d-flex align-items-center tw-gap-705">
 
             <!-- Menu Button Start  -->
             <div class="header-three-menu">
@@ -1017,34 +951,4 @@
     <script src="assets/js/main.js"></script>
     <!-- cursor js -->
     <script src="assets/js/tw-cursor.js"></script>
-    
-    <!-- Dark Mode Toggle Script -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.getElementById('theme-toggle-btn');
-        const toggleIcon = document.getElementById('theme-toggle-icon');
-        
-        // Default to dark mode if not specified
-        const savedTheme = localStorage.getItem('grishma-theme') || 'dark';
-        if (savedTheme === 'dark') {
-          document.body.classList.add('crazy-dark');
-          if (toggleIcon) toggleIcon.className = 'ph-bold ph-sun fs-4';
-        } else {
-          document.body.classList.remove('crazy-dark');
-          if (toggleIcon) toggleIcon.className = 'ph-bold ph-moon-stars fs-4';
-        }
-
-        if (toggleBtn) {
-          toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('crazy-dark');
-            const isDark = document.body.classList.contains('crazy-dark');
-            localStorage.setItem('grishma-theme', isDark ? 'dark' : 'light');
-            if (toggleIcon) {
-              toggleIcon.className = isDark ? 'ph-bold ph-sun fs-4' : 'ph-bold ph-moon-stars fs-4';
-              toggleIcon.style.color = '#FF5101';
-            }
-          });
-        }
-      });
-    </script>
 </body></html>
