@@ -166,7 +166,8 @@
   ////////////////////////////////////////////////////
   // 07. AOS Js
   AOS.init({
-    once: false, // animation will happen every time you scroll
+    once: true, // animation happens once so content never disappears when scrolling back up
+    mirror: false,
     offset: 0, // start animation when element enters the viewport
     anchorPlacement: "top-bottom", // when the bottom of the element hits the bottom of the screen
   });
